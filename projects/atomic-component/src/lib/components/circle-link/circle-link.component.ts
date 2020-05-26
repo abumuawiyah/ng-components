@@ -1,4 +1,4 @@
-import { Component, HostBinding } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "ui-circle-link",
@@ -81,6 +81,5 @@ import { Component, HostBinding } from "@angular/core";
   ],
 })
 export class CircleLinkComponent {
-  @HostBinding("class") className;
   constructor() {}
 }

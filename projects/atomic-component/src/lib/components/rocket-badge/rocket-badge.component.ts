@@ -1,4 +1,4 @@
-import { Component, HostBinding } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "ui-rocket-badge",
@@ -95,6 +95,6 @@ import { Component, HostBinding } from "@angular/core";
   ],
 })
 export class RocketBadgeComponent {
-  @HostBinding("class") className;
+  @Input() title: string;
   constructor() {}
 }

@@ -1,4 +1,4 @@
-import { Component, HostBinding } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "ui-resource-link",
@@ -80,6 +80,5 @@ import { Component, HostBinding } from "@angular/core";
   ],
 })
 export class ResourceLinkComponent {
-  @HostBinding("class") className;
   constructor() {}
 }

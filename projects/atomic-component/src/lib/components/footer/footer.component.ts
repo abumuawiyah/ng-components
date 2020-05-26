@@ -1,4 +1,4 @@
-import { Component, HostBinding } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "ui-footer",
@@ -101,6 +101,5 @@ import { Component, HostBinding } from "@angular/core";
   ],
 })
 export class FooterComponent {
-  @HostBinding("class") className;
   constructor() {}
 }

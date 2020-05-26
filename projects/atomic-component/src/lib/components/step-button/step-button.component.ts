@@ -1,13 +1,9 @@
-import { Component, HostBinding } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "ui-step-button",
   template: `
-    <div
-      class="step-button "
-      (click)="selection.value = 'component'"
-      tabindex="0"
-    >
+    <div class="step-button " tabindex="0">
       <svg
         class="material-icons"
         xmlns="http://www.w3.org/2000/svg"
@@ -53,6 +49,5 @@ import { Component, HostBinding } from "@angular/core";
   ],
 })
 export class StepButtonComponent {
-  @HostBinding("class") className;
   constructor() {}
 }
