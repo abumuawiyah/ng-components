@@ -1,0 +1,167 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "atomic-component": {
+      "root": "projects/atomic-component",
+      "sourceRoot": "projects/atomic-component/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/atomic-component/tsconfig.lib.json",
+            "project": "projects/atomic-component/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/atomic-component/src/test.ts",
+            "tsConfig": "projects/atomic-component/tsconfig.spec.json",
+            "karmaConfig": "projects/atomic-component/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/atomic-component/tsconfig.lib.json",
+              "projects/atomic-component/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "atomic-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/atomic-app",
+      "sourceRoot": "projects/atomic-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/atomic-app",
+            "index": "projects/atomic-app/src/index.html",
+            "main": "projects/atomic-app/src/main.ts",
+            "polyfills": "projects/atomic-app/src/polyfills.ts",
+            "tsConfig": "projects/atomic-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/atomic-app/src/favicon.ico",
+              "projects/atomic-app/src/assets"
+            ],
+            "styles": [
+              "projects/atomic-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/atomic-app/src/environments/environment.ts",
+                  "with": "projects/atomic-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "atomic-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "atomic-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "atomic-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/atomic-app/src/test.ts",
+            "polyfills": "projects/atomic-app/src/polyfills.ts",
+            "tsConfig": "projects/atomic-app/tsconfig.spec.json",
+            "karmaConfig": "projects/atomic-app/karma.conf.js",
+            "assets": [
+              "projects/atomic-app/src/favicon.ico",
+              "projects/atomic-app/src/assets"
+            ],
+            "styles": [
+              "projects/atomic-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/atomic-app/tsconfig.app.json",
+              "projects/atomic-app/tsconfig.spec.json",
+              "projects/atomic-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/atomic-app/e2e/protractor.conf.js",
+            "devServerTarget": "atomic-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "atomic-app:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "atomic-app",
+  "cli": {
+    "analytics": false
+  }
+}
