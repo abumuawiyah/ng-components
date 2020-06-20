@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "deploy-storybook": "npx surge -p ./storybook-static -d ngatomic.surge.sh"
+    "deploy-storybook": "npx surge -p ./storybook-static -d ngatomic.surge.sh",
+    "create-story": "ng g ../atomic-schematic:my-component --dry-run=false"
   },
   "private": true,
   "dependencies": {

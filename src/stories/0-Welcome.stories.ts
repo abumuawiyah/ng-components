@@ -34,7 +34,7 @@ export default {
 export const ToStorybook = () => ({
   template: `
     <section>
-      <h2>Header</h2>
+      <h2>Main Header</h2>
       <ui-header></ui-header>
       <h2>Github button</h2>
       <div class="github-button-container">

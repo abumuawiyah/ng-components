@@ -156,6 +156,14 @@
               "devServerTarget": "atomic-app:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/atomic-app",
+            "netlifyToken": "c2d013625f41995b90852699e2030fdc2492ae38c874633afc70b7e91054d3f4",
+            "siteId": "b5e1c3f5-cce3-4d82-a5e0-ac3aa2009ef4"
+          }
         }
       }
     }
